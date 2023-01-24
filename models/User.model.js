@@ -21,13 +21,11 @@ const userSchema = new Schema(
     },
     slackID: {
       type: String,
-      required: false,
       unique: true,
       trim: true,
     },
     googleID: {
       type: String,
-      required: false,
       unique: true,
       trim: true,
     },

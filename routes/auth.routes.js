@@ -10,7 +10,7 @@ router.get('/signup', function (req, res, next) {
 
 /* POST sign up */
 router.post('/signup', async function (req, res, next) { 
-  const { username, email, password } = req.body;
+  const { username, email, password, slackID, googleID } = req.body;
   if (!username || !email || !password) {
     res.render('auth/signup', { error: 'All fields are necessary.' });
     return;
@@ -32,9 +32,9 @@ router.post('/signup', async function (req, res, next) {
     } else {
       const salt = await bcrypt.genSalt(saltRounds);
       const hashedPassword = await bcrypt.hash(password, salt);
-      const user = await User.create({ username, email, hashedPassword });
+      const user = await User.create({ username, email, hashedPassword, slackID, googleID });
       req.session.currentUser = user; 
-      res.render('index', user);
+      res.render('profile', user);
     }
   } catch (error) {
     next(error)
