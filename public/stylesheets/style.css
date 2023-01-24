@@ -9,6 +9,7 @@ a {
 
 h1 {
   color: 15px;
+  margin-bottom: 25px;
 }
 
 /* SIGNUP / LOGIN FORMS */
@@ -94,4 +95,35 @@ ul li {
 }
 #logout-form button {
   width: 120px;
+}
+
+/* Signup / Login buttons */
+#menu-container > a {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#menu-container > a {
+  background: #6143e6;
+  border: 1px solid #6143e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.3s ease background;
+  width: 100%;
+}
+
+#menu-container > a:hover {
+  background: #fff;
+  color: #6143e6;
+  transition: 0.3s ease background;
 }
