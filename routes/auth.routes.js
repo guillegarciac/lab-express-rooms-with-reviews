@@ -41,4 +41,36 @@ router.post('/signup', async function (req, res, next) {
   }
 });
 
+/* GET log in view. */
+router.get('/login', (req, res, next) => {
+  res.render('auth/login');
+});
+
+/* POST log in view. */
+router.post('/login', async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    res.render('auth/login', { error: 'Introduce email and password to log in' });
+    return;
+  }
+  try {
+    const userInDB = await User.findOne({ email: email });
+    if (!userInDB) {
+      res.render('auth/login', { error: `There are no users by ${email}` });
+      return;
+    } else {
+      const passwordMatch = await bcrypt.compare(password, userInDB.hashedPassword);
+      if (passwordMatch) {
+        req.session.currentUser = userInDB;
+        res.render('profile', {userInDB});
+      } else {
+        res.render('auth/login',  { error: 'Unable to authenticate user' });
+        return;
+      }
+    }
+  } catch (error) {
+    next(error)
+  }
+});
+
 module.exports = router;
