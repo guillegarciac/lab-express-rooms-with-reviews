@@ -34,7 +34,7 @@ router.post('/signup', async function (req, res, next) {
       const hashedPassword = await bcrypt.hash(password, salt);
       const user = await User.create({ username, email, hashedPassword });
       req.session.currentUser = user; 
-      res.render('profile', user);
+      res.render('index', user);
     }
   } catch (error) {
     next(error)

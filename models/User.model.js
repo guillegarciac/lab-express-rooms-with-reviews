@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
   {
     username: {
@@ -16,9 +15,9 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
     },
-    password: {
+    hashedPassword: {
       type: String,
-      required: true,
+      required: [true, 'Please add a password']
     },
     slackID: {
       type: String,
