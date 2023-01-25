@@ -5,7 +5,7 @@ const isLoggedIn = require('../middlewares');
 
 /* GET all rooms */
 /* ROUTE /rooms */
-router.get('/', async function (req, res, next) {
+router.get('/', isLoggedIn, async function (req, res, next) {
   try {
     const rooms = await Room.find({}).sort({ title: 1 });
     res.render('roomView', { rooms });
@@ -16,13 +16,13 @@ router.get('/', async function (req, res, next) {
 
 /* GET form view */
 /* ROUTE /rooms/new */
-router.get('/new', function (req, res, next) {
+router.get('/new', isLoggedIn, function (req, res, next) {
   res.render('newRoom');
 });
 
 /* POST get users show inputs */
 /* ROUTE /rooms/new */
-router.post('/new', async function (req, res, next) {
+router.post('/new', isLoggedIn, async function (req, res, next) {
   const { name, description, imageUrl } = req.body;
   try {
     const createdRoom = await Room.create({ name, description, imageUrl });
@@ -34,7 +34,7 @@ router.post('/new', async function (req, res, next) {
 
 /* GET one room */
 /* ROUTE /rooms/:roomId */
-router.get('/:roomId', async function (req, res, next) {
+router.get('/:roomId', isLoggedIn, async function (req, res, next) {
   const { roomId } = req.params;
   const user = req.session.currentUser;
   try {
