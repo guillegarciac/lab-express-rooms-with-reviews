@@ -1,0 +1,14 @@
+<div>
+    {{#with room}}
+      <div class="room-card-expanded">
+        <div class="card-expanded-container-room">
+          <img height="350" src="{{image}}" alt="{{name}}"/>
+        </div>  
+        <div class="card-container">
+          <h2>{{name}}</h2>
+          <p>Description:<br>{{description}}</p>
+          <p>Owner:<br>{{owner}}</p>
+        </div>
+     </div>
+    {{/with}} 
+  </div>

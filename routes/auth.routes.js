@@ -63,7 +63,7 @@ router.post('/login', async (req, res, next) => {
       const passwordMatch = await bcrypt.compare(password, userInDB.hashedPassword);
       if (passwordMatch) {
         req.session.currentUser = userInDB;
-        res.render('profile', {userInDB});
+        res.render('roomView', {userInDB});
       } else {
         res.render('auth/login',  { error: 'Unable to authenticate user' });
         return;
