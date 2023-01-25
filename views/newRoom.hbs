@@ -1,0 +1,19 @@
+<body id="form">
+  <h1>New Room</h1>
+  <section id="menu-container">
+    <form method="POST" action="/rooms/new">
+      <label>Room Name</label>
+      <input type="text" name="name" placeholder="Junior Suite" required="true"/>
+      <label>Description</label>
+      <input type="textarea" name="description" placeholder="Sea View balcony" required="true"/>
+      <label>Image</label>
+      <input type="text" name="imageUrl" placeholder="https://..." required="true"/>
+      <label>Owner</label>
+      <input type="text" name="description" placeholder="Sea View balcony" required="true"/>
+      <button type="submit">Add Room</button>
+      {{#if error}}
+        <p style="color: red">{{error}}</p>
+      {{/if}}
+    </form>
+  </section>
+</div>
