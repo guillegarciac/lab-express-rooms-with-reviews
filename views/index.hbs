@@ -1,5 +1,5 @@
 <body id="form">
-  <h1>Hello!</h1>
+  <h1>Hello {{#if user}}{{username}}{{user.username}}{{userInDB.username}}{{/if}}</h1>
   <section id="menu-container">
     <a id="form" href="auth/signup">Signup</a>
     <a id="form" href="auth/login">Login</a>
