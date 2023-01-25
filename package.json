@@ -16,6 +16,10 @@
     "hbs": "^4.2.0",
     "mongoose": "^6.8.4",
     "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "passport-slack": "^0.0.7",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
