@@ -134,11 +134,11 @@ ul li {
   text-align: center;
   background: white;
   padding: 20px;
-  width: 180px;
   height: auto;
   border-radius: 3px;
   box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
 } 
+
 .avatar {
   border-radius: 50%;
   width:125px;
@@ -169,4 +169,42 @@ ul li {
   padding: 10px 50px;
   border: none;
   border-radius: 2px;
+}
+
+/* A BUTTON */
+
+#form a {
+  background: #6143e6;
+  border: 1px solid #6143e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.3s ease background;
+  width: 91%;
+}
+
+#formProfile button {
+  background: #6143e6;
+  border: 1px solid #6143e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.3s ease background;
+  width: 100%;
+}
+#form a:hover,
+#formProfile button:hover {
+  background: #fff;
+  color: #6143e6;
+  transition: 0.3s ease background;
 }

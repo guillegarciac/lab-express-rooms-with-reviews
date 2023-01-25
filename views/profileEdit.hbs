@@ -1,8 +1,12 @@
-<div id="form">
-  <h1>Editing {{username}}'s profile</h1>
-  <form method="POST" action="/profile/edit">
-    <label>New username:</label>
-    <input type="text" name="username" required="true" value="{{username}}" />
-    <button type="submit">Save changes</button>
-  </form>
+<div class="card">
+  <div class="profile">
+    <img src="https://jackflacco.files.wordpress.com/2016/02/iron-man.jpg?w=900" class="avatar">
+  </div>
+  <section id="menu-container">
+    <form method="POST" action="/profile/edit">
+      <label>New username:</label>
+      <input type="text" name="username" required="true" value="{{username}}" />
+      <button type="submit">Save changes</button>
+    </form>
+  </section>
 </div>
