@@ -127,3 +127,46 @@ ul li {
   color: #6143e6;
   transition: 0.3s ease background;
 }
+
+/* PROFILE CARD */
+
+.card {
+  text-align: center;
+  background: white;
+  padding: 20px;
+  width: 180px;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+} 
+.avatar {
+  border-radius: 50%;
+  width:125px;
+}
+
+.title, .subtitle {
+  margin: 0;
+}
+
+.title {
+  padding-top: 10px;
+  font-size: 24px
+}
+
+.subtitle {
+  padding: 5px 0;
+  color: lighten(black, 50%);
+}
+
+.btn-wrapper {
+  padding-top: 30px;
+}
+
+.btn-primary {
+  background: blue;
+  color: white;
+  font-size: 18px;
+  padding: 10px 50px;
+  border: none;
+  border-radius: 2px;
+}

@@ -1,10 +1,13 @@
-<div id="form">
-  <h1>{{username}}{{user.username}}{{userInDB.username}}'s profile</h1>
-  <p>Email: {{email}}{{user.email}}{{userInDB.email}}</p>
-  <p>slackID: {{slackID}}{{user.slackID}}{{userInDB.slackID}}</p>
-  <p>googleID: {{googleID}}{{user.googleID}}{{userInDB.googleID}}</p>
-  <a href="/profile/edit">Edit profile</a>
-  <form action="/auth/logout" method="GET">
+<div class="card">
+  <div class="profile">
+    <img src="https://jackflacco.files.wordpress.com/2016/02/iron-man.jpg?w=900" class="avatar">
+  </div>
+  <h1 class="title">{{username}}{{user.username}}{{userInDB.username}}</h1>
+  <a class="subtitle" href="/profile/edit">Edit profile</a>
+  <p class="subtitle">Email: {{email}}{{user.email}}{{userInDB.email}}</p>
+  <p class="subtitle">SlackId: {{slackID}}{{user.slackID}}{{userInDB.slackID}}</p>
+  <p class="subtitle">GoogleId: {{googleID}}{{user.googleID}}{{userInDB.googleID}}</p>
+  <div class="btn-wrapper">
     <button type="submit">Logout</button>
-  </form>
+  </div>
 </div>
