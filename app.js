@@ -56,11 +56,13 @@ app.locals.appTitle = `${capitalized(projectName)} created by guillegarciac`;
 const indexRoutes = require("./routes/index.routes");
 const usersRoutes = require("./routes/users.routes");
 const authRoutes = require("./routes/auth.routes");
+const roomsRouter = require("./routes/rooms.routes");
 
 
 app.use("/", indexRoutes);
 app.use("/", usersRoutes);
 app.use("/auth", authRoutes);
+app.use('/rooms', roomsRouter);
 
 
 
