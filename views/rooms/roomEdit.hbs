@@ -1,0 +1,22 @@
+<body id="form">
+  <header>
+    <nav id="nav-bar">
+      <a href="/"> ← Go back</a>
+    </nav>
+  </header>
+  <h1>Edit Room</h1>
+  <section id="menu-container">
+    <form method="POST" action="/rooms/{{room._id}}/edit">
+      <label>Room Name</label>
+      <input type="text" name="name" value="{{room.name}}" required="true"/>
+      <label>Description</label>
+      <input type="textarea" name="description" value="{{room.description}}" required="true"/>
+      <label>Image</label>
+      <input type="text" name="imageUrl" value="{{room.imageUrl}}" required="true"/>
+      <button type="submit">Edit Room</button>
+      {{#if error}}
+        <p style="color: red">{{error}}</p>
+      {{/if}}
+    </form>
+  </section>
+</div>

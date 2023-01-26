@@ -53,4 +53,31 @@ router.get('/:roomId', isLoggedIn, async function (req, res, next) {
   }
 });
 
+/* GET one room edit */
+/* ROUTE /rooms/:roomId/edit */
+router.get('/:roomId/edit', isLoggedIn, async function (req, res, next) {
+  const { roomId } = req.params;
+  const user = req.session.currentUser;
+  try {
+    const room = await Room.findById(roomId).populate('owner');
+    res.render('rooms/roomEdit', { user, room });
+  } catch (error) {
+    next(error)
+  }
+});
+
+/* POST Room Update */
+/* ROUTE rooms/:roomId/edit */
+router.post('/:roomId/edit', isLoggedIn, async (req, res, next) => {
+  const user = req.session.currentUser;
+  const { roomId } = req.params;
+  const { name, description, imageUrl } = req.body;
+  try {
+    await Room.findByIdAndUpdate(roomId._id, { name, description, imageUrl, owner: user }, {new:true})
+    res.redirect('/rooms')
+  } catch (error) {
+    next(error)
+  }
+});
+
 module.exports = router;
