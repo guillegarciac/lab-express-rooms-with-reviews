@@ -15,8 +15,10 @@
           <p>Description:<br>{{description}}</p>
           <p>Owner:<br>{{owner.username}}</p>
           <div id="button-see-more">
+            {{#if owner.username}} {{!-- This is nor working. Need to check --}}
             <a href="/rooms/{{_id}}/edit">Edit Room</a>
             <a href="/rooms/{{_id}}/delete">Delete Room</a>
+            {{/if}}
           </div>
         </div>
      </div>
