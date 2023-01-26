@@ -28,8 +28,9 @@ router.post('/new', isLoggedIn, async function (req, res, next) {
   const user = req.session.currentUser;
   const { name, description, imageUrl } = req.body;
   try {
-    await Room.create({ name, description, imageUrl, owner: user });
+    const room = await Room.create({ name, description, imageUrl, owner: user});
     res.redirect('/rooms');
+    console.log(`This is the ${room.owner._id.username} & ${user.username} `)
   } catch (error) {
     next(error)
   }
