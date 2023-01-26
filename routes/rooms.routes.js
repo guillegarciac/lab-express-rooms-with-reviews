@@ -42,7 +42,7 @@ router.post('/new', isLoggedIn, async function (req, res, next) {
 
 /* GET one room */
 /* ROUTE /rooms/:roomId */
-router.get('rooms/:roomId', isLoggedIn, async function (req, res, next) {
+router.get('/:roomId', isLoggedIn, async function (req, res, next) {
   const { roomId } = req.params;
   const user = req.session.currentUser;
   try {
