@@ -33,8 +33,8 @@ router.post('/new', isLoggedIn, async function (req, res, next) {
     return;
   }
   try {
-    await Room.create({ name, description, imageUrl, owner: user});
-    res.redirect('/rooms' );
+    const createdRoom = await Room.create({ name, description, imageUrl, owner: user});
+    res.redirect(`/rooms/${createdRoom._id}`);
   } catch (error) {
     next(error)
   }
