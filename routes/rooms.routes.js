@@ -6,9 +6,10 @@ const isLoggedIn = require('../middlewares');
 /* GET all rooms */
 /* ROUTE /rooms */
 router.get('/', isLoggedIn, async function (req, res, next) {
+  const user = req.session.currentUser;
   try {
-    const rooms = await Room.find({}).sort({ title: 1 });
-    res.render('roomView', { rooms });
+    const rooms = await Room.find({}).populate('owner').sort({ title: 1 });
+    res.render('rooms/roomView', { user, rooms });
   } catch (error) {
     next(error)
   }
@@ -17,16 +18,18 @@ router.get('/', isLoggedIn, async function (req, res, next) {
 /* GET form view */
 /* ROUTE /rooms/new */
 router.get('/new', isLoggedIn, function (req, res, next) {
-  res.render('newRoom');
+  const user = req.session.currentUser;
+  res.render('rooms/newRoom', { user });
 });
 
 /* POST get users show inputs */
 /* ROUTE /rooms/new */
 router.post('/new', isLoggedIn, async function (req, res, next) {
+  const user = req.session.currentUser;
   const { name, description, imageUrl } = req.body;
   try {
-    const createdRoom = await Room.create({ name, description, imageUrl });
-    res.redirect(`/rooms/${createdRoom._id}`);
+    await Room.create({ name, description, imageUrl, owner: user });
+    res.redirect('/rooms');
   } catch (error) {
     next(error)
   }
@@ -34,12 +37,12 @@ router.post('/new', isLoggedIn, async function (req, res, next) {
 
 /* GET one room */
 /* ROUTE /rooms/:roomId */
-router.get('/:roomId', isLoggedIn, async function (req, res, next) {
+router.get('rooms/:roomId', isLoggedIn, async function (req, res, next) {
   const { roomId } = req.params;
   const user = req.session.currentUser;
   try {
-    const room = await Room.findById(roomId);
-    res.render('roomDetail', { room, user });
+    const room = await Room.findById(roomId).populate('owner');
+    res.render('rooms/roomDetail', { user, room });
   } catch (error) {
     next(error)
   }
