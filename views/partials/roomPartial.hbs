@@ -4,10 +4,15 @@
       <a href="/"> ← Go back</a>
     </nav>
   </header>
-<div>
-  <h4>{{name}}</h4>
-  <img width="150px" src={{imageUrl}} alt={{title}}/>
-  <p>Room Description: {{description}}</p>
-  <p>Owner: {{user.username}}.</p> 
-</div>
+  
+<div class="room-card">
+  <div class="card-container-room">
+    <img width="150px" src={{imageUrl}} alt={{title}}/>
+  </div>
+  <div class="card-container">
+    <h4>{{name}}</h4>
+      <p>Room Description: {{description}}</p>
+      <p>Owner: {{user.username}}.</p> 
+  </div>  
+  </div>
 </body>

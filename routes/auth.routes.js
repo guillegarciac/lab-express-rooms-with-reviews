@@ -44,7 +44,8 @@ router.post('/signup', async function (req, res, next) {
 
 /* GET log in view. */
 router.get('/login', (req, res, next) => {
-  res.render('auth/login');
+  const user = req.session.currentUser;
+  res.render('auth/login', user);
 });
 
 /* POST log in view. */
@@ -63,7 +64,7 @@ router.post('/login', async (req, res, next) => {
       const passwordMatch = await bcrypt.compare(password, userInDB.hashedPassword);
       if (passwordMatch) {
         req.session.currentUser = userInDB;
-        res.render('profile', {userInDB});
+        res.render('profile', {user: userInDB});
       } else {
         res.render('auth/login',  { error: 'Unable to authenticate user' });
         return;
@@ -74,6 +75,13 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
+/* GET profile view */
+/* ROUTE auth/profile */
+router.get('/profile', (req, res, next) => {
+  const user = req.session.currentUser;
+  res.render('/profile', { user })
+});
+
 /* GET logout */
 router.get('/logout', isLoggedIn, (req, res, next) => {
   req.session.destroy((err) => {
@@ -81,7 +89,7 @@ router.get('/logout', isLoggedIn, (req, res, next) => {
       next(err)
     } else {
       res.clearCookie('lab-express-rooms-with-reviews')
-      res.redirect('/auth/login');
+      res.redirect('/');
     }
   });
 });
