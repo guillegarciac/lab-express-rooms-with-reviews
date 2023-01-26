@@ -1,7 +1,7 @@
 <body id="form">
   <header>
     <nav id="nav-bar">
-      <a href="/"> ← Go back</a>
+      <a href="/"> ← Go back {{user.username}}</a>
     </nav>
   </header>
 <div>
@@ -15,9 +15,9 @@
           <p>Description:<br>{{description}}</p>
           <p>Owner:<br>{{owner.username}}</p>
           <div id="button-see-more">
-            {{#if owner.username}} {{!-- This is nor working. Need to check --}}
-            <a href="/rooms/{{_id}}/edit">Edit Room</a>
-            <a href="/rooms/{{_id}}/delete">Delete Room</a>
+            {{#if user.username}} {{!-- This is nor working. Need to check --}}
+              <a href="/rooms/{{_id}}/edit">Edit Room</a>
+              <a href="/rooms/{{_id}}/delete">Delete Room</a>
             {{/if}}
           </div>
         </div>

@@ -8,7 +8,7 @@ const isLoggedIn = require('../middlewares');
 router.get('/', isLoggedIn, async function (req, res, next) {
   const user = req.session.currentUser;
   try {
-    const rooms = await Room.find({}).populate('owner').sort({ title: 1 });
+    const rooms = await Room.find({}).populate('owner');
     res.render('rooms/roomView', { user, rooms });
   } catch (error) {
     next(error)
@@ -33,8 +33,8 @@ router.post('/new', isLoggedIn, async function (req, res, next) {
     return;
   }
   try {
-    const room = await Room.create({ name, description, imageUrl, owner: user});
-    res.redirect('/rooms');
+    await Room.create({ name, description, imageUrl, owner: user});
+    res.redirect('/rooms' );
   } catch (error) {
     next(error)
   }

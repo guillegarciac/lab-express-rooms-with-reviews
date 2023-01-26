@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
+const Room = require("../models/Room.model");
 const isLoggedIn = require('../middlewares');
 
 /* GET users listing. */
@@ -23,6 +24,18 @@ router.post('/profile/edit', isLoggedIn, async function (req, res, next) {
     res.redirect('/profile');
   } catch (error) {
     next(error);
+  }
+});
+
+/* GET my rooms */
+/* ROUTE /rooms */
+router.get('/profile/rooms', isLoggedIn, async function (req, res, next) {
+  const user = req.session.currentUser;
+  try {
+    const rooms = await Room.find({owner: user}).populate('owner')
+    res.render('profileRooms', { user, rooms });
+  } catch (error) {
+    next(error)
   }
 });
 

@@ -1,7 +1,7 @@
 <body id="form">
   <header>
     <nav id="nav-bar">
-      <a href="/"> ← Go back</a>
+      <a href="/"> ← Go back {{username}}</a>
     </nav>
   </header>
 <div class="card">
@@ -14,7 +14,7 @@
     <p class="subtitle">SlackId: {{slackID}}{{user.slackID}}{{userInDB.slackID}}</p>
     <p class="subtitle">GoogleId: {{googleID}}{{user.googleID}}{{userInDB.googleID}}</p>
     <a href="/profile/edit">Edit profile</a>
-    <a href="/rooms">See Rooms</a> 
+    <a href="/profile/rooms">See Rooms</a> 
     <a href="/auth/logout">Logout</a>
   </section>
 </div>
