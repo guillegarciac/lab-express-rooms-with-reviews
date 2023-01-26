@@ -308,3 +308,27 @@ font-size: 30px;
 margin-top: 25px;
 font-size: 16px;
 }
+
+/* SEE MORE BUTTONS */
+#button-see-more {
+  display: block;
+}
+
+#button-see-more > a {
+  background: #6143e6;
+  color: #fff;
+  padding: 15px 0px;
+  margin-top: 40px;
+  border-radius: 20px;
+  text-decoration: none;
+  display: flex;
+  width: 150px;
+  justify-content: center;
+  align-self: flex-end;
+}
+
+#button-see-more a:hover {
+  background: #fff;
+  color: #6143e6;
+  transition: 0.3s ease background;
+}
