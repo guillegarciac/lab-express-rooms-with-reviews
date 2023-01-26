@@ -27,10 +27,14 @@ router.get('/new', isLoggedIn, function (req, res, next) {
 router.post('/new', isLoggedIn, async function (req, res, next) {
   const user = req.session.currentUser;
   const { name, description, imageUrl } = req.body;
+  const regexUrl = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+  if (!regexUrl.test(imageUrl)) {
+    res.render('rooms/newRoom', { error: 'image needs to be a valid http:// address'});
+    return;
+  }
   try {
     const room = await Room.create({ name, description, imageUrl, owner: user});
     res.redirect('/rooms');
-    console.log(`This is the ${room.owner._id.username} & ${user.username} `)
   } catch (error) {
     next(error)
   }
