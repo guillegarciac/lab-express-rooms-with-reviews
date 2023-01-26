@@ -80,4 +80,22 @@ router.post('/:roomId/edit', isLoggedIn, async (req, res, next) => {
   }
 });
 
+/* GET delete Room */
+/* ROUTE rooms/:roomId/delete */
+router.get('/:roomId/delete', isLoggedIn, async (req, res, next) => {
+  const user = req.session.currentUser;
+  const { roomId } = req.params;
+  try {
+    const room = await Room.findById(roomId).populate('owner');
+    if (room.owner._id == user._id) {
+      await Room.findByIdAndRemove(roomId);
+      res.redirect('/rooms')
+    } else {
+      res.redirect('/rooms')
+    }
+  } catch (error) {
+    next(error)
+  }
+});
+
 module.exports = router;
