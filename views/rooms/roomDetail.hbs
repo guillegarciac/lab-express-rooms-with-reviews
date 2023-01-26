@@ -8,12 +8,12 @@
     {{#with room}}
       <div class="room-card-expanded">
         <div class="card-expanded-container-room">
-          <img height="350" src="{{imageUrl}}" alt="{{name}}"/>
+          <img width= "250" height="250" src="{{imageUrl}}" alt="{{name}}"/>
         </div>  
         <div class="card-container">
           <h2>{{name}}</h2>
           <p>Description:<br>{{description}}</p>
-          <p>Owner:<br>{{owner}}</p>
+          <p>Owner:<br>{{owner.username}}</p>
         </div>
      </div>
     {{/with}} 
