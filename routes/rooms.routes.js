@@ -73,8 +73,11 @@ router.post('/:roomId/edit', isLoggedIn, async (req, res, next) => {
   const { roomId } = req.params;
   const { name, description, imageUrl } = req.body;
   try {
-    await Room.findByIdAndUpdate(roomId._id, { name, description, imageUrl, owner: user }, {new:true})
-    res.redirect('/rooms')
+    const room = await Room.findById(roomId).populate('owner');
+    if (room.owner._id == user._id) {
+      const editedRoom = await Room.findByIdAndUpdate(roomId, { name, description, imageUrl, owner: user }, {new:true})
+      res.redirect(`/rooms/${editedRoom._id}`)
+    }
   } catch (error) {
     next(error)
   }
